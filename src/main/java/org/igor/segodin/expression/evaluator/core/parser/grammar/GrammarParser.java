@@ -201,14 +201,7 @@ public class GrammarParser {
             if (nextToken == null) {
                 return expression;
             } else if (ARITHMETIC_OPERATORS.contains(nextToken.getType())) {
-                if (operatorIdx + 3 >= endIdx) {
-                    throw new GrammarException("Unexpected end of expression", nextToken);
-                }
-                return new ArithmeticExpression(
-                        expression,
-                        parseInternal(tokens, operatorIdx + 3, endIdx),
-                        nextToken.getSample()
-                );
+                return parseNextArithmeticOperator(nextToken, nextStartIdx, expression, tokens, nextStartIdx, endIdx);
             } else {
                 throw new GrammarException("Unexpected token", nextToken);
             }
