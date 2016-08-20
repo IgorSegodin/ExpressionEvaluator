@@ -2,19 +2,19 @@ package org.igor.segodin.expression.evaluator.core.parser;
 
 import org.igor.segodin.expression.evaluator.core.expression.Expression;
 import org.igor.segodin.expression.evaluator.core.parser.grammar.GrammarException;
-import org.igor.segodin.expression.evaluator.core.parser.grammar.GrammarParser;
+import org.igor.segodin.expression.evaluator.core.parser.grammar.StandardGrammarParser;
+import org.igor.segodin.expression.evaluator.core.parser.token.StandardTokenParser;
 import org.igor.segodin.expression.evaluator.core.parser.token.Token;
 import org.igor.segodin.expression.evaluator.core.parser.token.TokenException;
-import org.igor.segodin.expression.evaluator.core.parser.token.TokenParser;
 
 /**
  * @author igor
  */
 public class ArithmeticExpressionParser implements ExpressionParser {
 
-    protected TokenParser tokenParser = new TokenParser();
+    protected StandardTokenParser tokenParser = new StandardTokenParser();
 
-    protected GrammarParser grammarParser = new GrammarParser();
+    protected StandardGrammarParser grammarParser = new StandardGrammarParser();
 
     public Expression parse(String expression) throws ParseException {
         try {

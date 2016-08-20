@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.igor.segodin.expression.evaluator.core.expression.Expression;
+import org.igor.segodin.expression.evaluator.core.util.FunctionUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -101,6 +102,27 @@ public class ArithmeticExpressionParserTest {
         Expression expression = parser.parse(string);
 
         Assert.assertEquals(3.3, expression.evaluate());
+    }
+
+    @Test
+    public void functionTest01() throws ParseException, NoSuchMethodException {
+        String string = "singleArg(2+2) * twoArgs(1 + 1, (3*2 +1))";
+        Expression expression = parser.parse(string);
+
+        Map<String, Object> ctx = new HashMap<>();
+        ctx.put("singleArg", FunctionUtil.getFunctionFromClass(this.getClass(), "singleArg"));
+        ctx.put("twoArgs", FunctionUtil.getFunctionFromClass(this.getClass(), "twoArgs"));
+
+        Assert.assertEquals(72.0, expression.evaluate(ctx));
+
+    }
+
+    public static Double singleArg(Double a) {
+        return a * 2;
+    }
+
+    public static Double twoArgs(Double a, Double b) {
+        return a + b;
     }
 
 }

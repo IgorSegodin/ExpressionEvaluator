@@ -1,5 +1,7 @@
 package org.igor.segodin.expression.evaluator.core.parser.token;
 
+import org.igor.segodin.expression.evaluator.core.parser.token.type.TokenType;
+
 /**
  * Atomic presentation of single grammar element
  *

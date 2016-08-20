@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public class ContextVariableExpression extends AbstractExpression {
 
-    private String variable;
+    protected String variable;
 
     public ContextVariableExpression(String variable) {
         this.variable = variable;
@@ -18,6 +18,7 @@ public class ContextVariableExpression extends AbstractExpression {
         if (context == null || !context.containsKey(variable)) {
             throw new EvaluationException("Can't resolve context variable: " + variable);
         }
+        // TODO nested property
         return context.get(variable);
     }
 }

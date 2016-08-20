@@ -1,5 +1,8 @@
 package org.igor.segodin.expression.evaluator.core.parser.token;
 
+import org.igor.segodin.expression.evaluator.core.parser.token.type.StandardTokenTypes;
+import org.igor.segodin.expression.evaluator.core.parser.token.type.TokenType;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,19 +13,9 @@ import java.util.List;
  *
  * @author igor
  */
-public class TokenParser {
+public class StandardTokenParser {
 
-    private List<TokenType> tokenTypes = Arrays.asList(
-            TokenType.NUMBER,
-            TokenType.VARIABLE,
-            TokenType.PLUS_OPERATOR,
-            TokenType.MINUS_OPERATOR,
-            TokenType.MULTIPLY_OPERATOR,
-            TokenType.DIVIDE_OPERATOR,
-            TokenType.POW_OPERATOR,
-            TokenType.OPEN_BRACE,
-            TokenType.CLOSE_BRACE
-    );
+    private List<TokenType> tokenTypes = Arrays.asList(StandardTokenTypes.values());
 
     public List<Token> parse(String expressionString) throws TokenException {
         char[] chars = expressionString.toCharArray();
