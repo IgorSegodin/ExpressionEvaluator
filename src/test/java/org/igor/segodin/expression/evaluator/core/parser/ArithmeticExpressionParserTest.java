@@ -24,6 +24,14 @@ public class ArithmeticExpressionParserTest {
     }
 
     @Test
+    public void operatorOrderTest02() throws ParseException {
+        String string = "1 + 2*2 + 3";
+        Expression expression = parser.parse(string);
+
+        Assert.assertEquals(8.0, expression.evaluate());
+    }
+
+    @Test
     public void operatorBraceTest() throws ParseException {
         String string = "(2+ 2)*2";
         Expression expression = parser.parse(string);
@@ -114,6 +122,18 @@ public class ArithmeticExpressionParserTest {
         ctx.put("twoArgs", FunctionUtil.getFunctionFromClass(this.getClass(), "twoArgs"));
 
         Assert.assertEquals(72.0, expression.evaluate(ctx));
+
+    }
+
+    @Test
+    public void functionTest02() throws ParseException, NoSuchMethodException {
+        String string = "twoArgs(1 + 1, (3*2 +1))";
+        Expression expression = parser.parse(string);
+
+        Map<String, Object> ctx = new HashMap<>();
+        ctx.put("twoArgs", FunctionUtil.getFunctionFromClass(this.getClass(), "twoArgs"));
+
+        Assert.assertEquals(9.0, expression.evaluate(ctx));
 
     }
 

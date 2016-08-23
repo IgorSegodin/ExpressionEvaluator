@@ -64,7 +64,7 @@ public class StandardTokenParser {
                         String fullSample = sample + nextChar.toString();
 
                         for (TokenType t : currentMatchingTokenTypes) {
-                            if (t.notMatches(fullSample)) {
+                            if (!t.matches(fullSample)) {
                                 currentBreakTokenTypes.add(t);
                             }
                         }

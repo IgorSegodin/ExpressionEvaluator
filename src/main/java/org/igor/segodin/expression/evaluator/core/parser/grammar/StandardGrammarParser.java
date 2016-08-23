@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * TODO make operator-centric, not to duplicate code
- *
+ * @deprecated use {@link ArithmeticGrammarParser} instead
  * @author igor
  */
 public class StandardGrammarParser {

@@ -45,10 +45,7 @@ public enum StandardTokenTypes implements TokenType {
         this.pattern = Pattern.compile(pattern);
     }
 
-    public boolean notMatches(String sample) {
-        return !matches(sample);
-    }
-
+    @Override
     public boolean matches(String sample) {
         return pattern.matcher(sample).matches();
     }
@@ -56,6 +53,7 @@ public enum StandardTokenTypes implements TokenType {
     /**
      * Returns token without unnecessary spaces
      * */
+    @Override
     public String extract(String sample) {
         Matcher matcher = pattern.matcher(sample);
         if (matcher.matches()) {

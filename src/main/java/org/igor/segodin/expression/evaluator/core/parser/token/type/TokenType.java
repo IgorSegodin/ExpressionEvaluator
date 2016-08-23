@@ -13,11 +13,6 @@ public interface TokenType {
     String name();
 
     /**
-     * Check if given text sample does not match this type
-     * */
-    boolean notMatches(String sample);
-
-    /**
      * Check if given text sample matches this type
      * */
     boolean matches(String sample);
